@@ -1,0 +1,41 @@
+# Secretos y variables locales
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Frontend/Node
+node_modules/
+dist/
+build/
+.next/
+coverage/
+
+# Backend (otras tecnologías posibles)
+bin/
+obj/
+.venv/
+__pycache__/
+*.pyc
+
+# Entornos de desarrollo
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+
+# Datos generados o cargados por usuarios
+pgdata/
+postgres-data/
+uploads/
+storage/
+backups/
+
+# Registros y temporales
+*.log
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db

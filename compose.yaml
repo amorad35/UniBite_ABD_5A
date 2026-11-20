@@ -1,0 +1,22 @@
+# Entorno inicial: únicamente PostgreSQL 18.
+# Frontend y backend se añadirán cuando se decidan sus tecnologías.
+services:
+  db:
+    image: postgres:18
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-unibite_db}
+      POSTGRES_USER: ${POSTGRES_USER:-unibite_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Crea tu archivo .env y establece POSTGRES_PASSWORD}
+    ports:
+      - "${POSTGRES_PORT:-5433}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
