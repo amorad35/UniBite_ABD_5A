@@ -1,0 +1,6 @@
+@UniBite.Api_HostAddress = http://localhost:5062
+
+GET {{UniBite.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
