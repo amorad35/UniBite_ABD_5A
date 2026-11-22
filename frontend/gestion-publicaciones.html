@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#173d2d" />
+  <title>UniBite | Gestión de publicaciones RF-06</title>
+  <link rel="icon" href="src/assets/logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="src/styles/main.css" />
+  <link rel="stylesheet" href="src/styles/v2.css" />
+  <link rel="stylesheet" href="src/styles/v21.css" />
+  <link rel="stylesheet" href="src/styles/productos-reales.css" />
+</head>
+<body>
+  <div class="demo-bar"><div class="wrap demo-bar-inner"><span><strong>RF-06</strong> Datos reales en PostgreSQL · Desarrollo local</span><span>UniBite · Grupo 5</span></div></div>
+  <header class="top-header productos-real-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html" aria-label="Inicio UniBite"><img src="src/assets/logo.svg" alt="" /><span>Uni<span class="brand-accent">Bite</span><small>Hecho por estudiantes</small></span></a>
+      <nav class="nav-links">
+        <a class="nav-link" href="gestion-productos.html">RF-05 · Productos</a>
+        <a class="nav-link active" href="gestion-publicaciones.html">RF-06 · Publicaciones</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap productos-real-wrap">
+    <div class="productos-real-intro">
+      <span class="eyebrow">Administración de bases de datos · UTEQ</span>
+      <h1>Gestión de publicaciones</h1>
+      <p class="lead muted">Publica alimentos, consulta ofertas, modifica precios y disponibilidad, o desactiva publicaciones. Los cambios se guardan mediante nuestra API C# en PostgreSQL.</p>
+    </div>
+    <div class="productos-real-grid">
+      <section class="productos-real-panel" aria-labelledby="form-heading">
+        <h2 id="form-heading">Crear publicación</h2>
+        <p class="panel-sub" id="form-subtitle">Completa los datos de una nueva oferta.</p>
+        <form id="form-publicacion" class="productos-real-form">
+          <input id="id-publicacion" type="hidden" />
+          <fieldset id="solo-crear" style="border:0;padding:0;margin:0;display:grid;gap:17px;min-width:0">
+            <label>Producto activo
+              <select id="producto" required><option value="">Consultando productos…</option></select>
+            </label>
+            <label>Modalidad
+              <select id="modalidad" required>
+                <option value="inmediata">Venta inmediata</option>
+                <option value="encargo">Por encargo</option>
+              </select>
+            </label>
+            <label>Fecha de entrega <input id="fecha-entrega" type="date" required /></label>
+            <label>Hora de entrega <input id="hora-entrega" type="time" value="12:30" required /></label>
+            <div id="datos-encargo" style="display:none;gap:17px">
+              <label>Cierre de recepción de encargos <input id="cierre-recepcion" type="datetime-local" /></label>
+              <label>Capacidad orientativa (privada) <input id="capacidad" type="number" min="1" step="1" placeholder="Ej. 20" /></label>
+              <p class="productos-real-note" style="margin-top:0">La capacidad es orientativa, no un bloqueo automático de pedidos. Las solicitudes se programarán en una etapa posterior.</p>
+            </div>
+          </fieldset>
+          <label>Precio de publicación (USD) <input id="precio" type="number" min="0.01" step="0.01" required placeholder="Ej. 1.75" /></label>
+          <label>Lugar de entrega <input id="lugar" type="text" maxlength="160" required placeholder="Ej. UTEQ - Bloque A" /></label>
+          <label id="opcion-disponible" style="display:none;grid-template-columns:auto 1fr;align-items:center"><input id="disponible" type="checkbox" checked style="width:auto;min-height:auto" /> Disponible para compradores</label>
+          <div class="productos-real-actions">
+            <button type="submit" class="btn primary" id="guardar">Guardar publicación</button>
+            <button type="button" class="btn outline" id="cancelar">Limpiar</button>
+          </div>
+        </form>
+        <p id="mensaje" class="productos-real-msg" role="status" aria-live="polite"></p>
+        <p class="productos-real-note"><strong>Entorno de desarrollo.</strong> No existe autenticación ni autorización de emprendedores todavía. No utilizar públicamente esta interfaz. Las publicaciones desactivadas conservan su registro.</p>
+      </section>
+      <section class="productos-real-panel" aria-labelledby="lista-heading">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+          <div><h2 id="lista-heading">Publicaciones registradas</h2><p class="panel-sub">Consultadas desde PostgreSQL</p></div>
+          <button class="btn outline" type="button" id="recargar">Actualizar lista</button>
+        </div>
+        <div class="productos-real-table-wrap">
+          <table class="productos-real-table" style="min-width:760px">
+            <thead><tr><th>ID</th><th>Producto</th><th>Modalidad</th><th>Precio</th><th>Entrega</th><th>Estado</th><th>Acciones</th></tr></thead>
+            <tbody id="publicaciones-tabla"><tr><td colspan="7">Consultando publicaciones…</td></tr></tbody>
+          </table>
+        </div>
+        <p class="productos-real-note">Editar permite modificar precio, lugar y disponibilidad, conforme a las rutas actuales de la API. La fecha, hora y modalidad se fijan al crear la publicación.</p>
+      </section>
+    </div>
+  </main>
+  <script src="src/services/publicaciones-api.js" defer></script>
+</body>
+</html>
