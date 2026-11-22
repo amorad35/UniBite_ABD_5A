@@ -1,0 +1,35 @@
+
+/* RF-05: extension visual de desarrollo conectada a PostgreSQL; conserva el tema original V2.1. */
+.unibite-real-link { position:fixed; right:20px; bottom:18px; z-index:100; display:inline-flex; align-items:center; gap:8px; padding:13px 18px; border-radius:999px; background:#174731; color:white; box-shadow:0 10px 30px #11371c40; font-size:12px; font-weight:750; text-decoration:none; }
+.unibite-real-link:hover{ background:#276c4b; color:white; }
+.productos-real-wrap { padding:38px 0 74px; }
+.productos-real-intro { margin:0 0 26px; }
+.productos-real-intro h1 { font-size:clamp(28px,3vw,42px); }
+.productos-real-grid { display:grid; grid-template-columns:minmax(280px,0.95fr) minmax(390px,1.5fr); gap:22px; align-items:start; }
+.productos-real-panel { background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:26px; box-shadow:var(--shadow); }
+.productos-real-panel h2 { font-size:21px; margin-bottom:6px; }
+.productos-real-panel .panel-sub { font-size:13px; color:#78877c; margin-bottom:20px; }
+.productos-real-form { display:grid; gap:17px; }
+.productos-real-form label { display:grid; gap:7px; color:#445a4a; font-size:13px; font-weight:700; }
+.productos-real-form input, .productos-real-form select { display:block; width:100%; min-height:43px; border:1px solid #d9e5da; border-radius:11px; background:white; padding:10px 12px; color:var(--text); }
+.productos-real-form input:focus-visible, .productos-real-form select:focus-visible { border-color:#236e4b; }
+.productos-real-actions { display:flex; gap:10px; flex-wrap:wrap; margin-top:6px; }
+.productos-real-actions .btn{ flex:1; }
+.productos-real-msg { min-height:21px; font-size:13px; margin:15px 0 0; }
+.productos-real-msg[data-kind="error"] { color:#a12d29; }
+.productos-real-msg[data-kind="ok"] { color:#1f7248; }
+.productos-real-table-wrap { overflow-x:auto; }
+.productos-real-table { border-collapse:collapse; width:100%; min-width:470px; text-align:left; font-size:13px; }
+.productos-real-table th { padding:13px 11px; border-bottom:1px solid #d9e5da; font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:#7d8b81; }
+.productos-real-table td { padding:14px 11px; border-bottom:1px solid #eef0ea; vertical-align:middle; }
+.productos-real-table td:last-child { text-align:right; }
+.productos-real-table .tiny-btn { font-size:11px; padding:6px 10px; border-radius:8px; min-height:31px; }
+.productos-real-table .tiny-btn + .tiny-btn { margin-left:5px; }
+.productos-real-badge { display:inline-block; font-size:11px; font-weight:750; padding:5px 9px; border-radius:99px; }
+.productos-real-badge.is-active{background:#e6f5dc;color:#25643d;}
+.productos-real-badge.is-inactive{background:#f1eee8;color:#745e43;}
+.productos-real-note { margin-top:19px; background:#f0f5e9; border-radius:13px; padding:13px 15px; font-size:12px; color:#536656; line-height:1.6; }
+.productos-real-header .brand{font-size:23px;}
+.productos-real-header .nav-links{display:flex;}
+@media(max-width:850px){.productos-real-grid{grid-template-columns:1fr;}.productos-real-header .header-inner{height:70px;}.productos-real-wrap{padding:24px 0 50px;}}
+@media(max-width:520px){.productos-real-panel{padding:19px 15px;}.productos-real-header .brand{font-size:19px;}.productos-real-header .brand img{width:34px;height:34px;}.unibite-real-link{right:10px;left:10px;justify-content:center;bottom:10px;}}

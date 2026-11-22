@@ -1,5 +1,7 @@
+using Microsoft.Extensions.FileProviders;
 using Npgsql;
 var builder = WebApplication.CreateBuilder(args);
+
 
 // Add services to the container.
 
@@ -8,7 +10,21 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
+if (app.Environment.IsDevelopment())
+{
+    var carpetaFrontend = Path.GetFullPath(
+        Path.Combine(
+            app.Environment.ContentRootPath,
+            "..", "..", "..", "frontend"
+        )
+    );
 
+    app.UseFileServer(new FileServerOptions
+    {
+        FileProvider = new PhysicalFileProvider(carpetaFrontend),
+        EnableDefaultFiles = true
+    });
+}
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
