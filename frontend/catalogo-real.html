@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#173d2d" />
+  <meta name="description" content="Consulta las publicaciones de alimentos disponibles de UniBite, con datos reales de PostgreSQL." />
+  <title>UniBite | Catálogo disponible</title>
+  <link rel="icon" href="src/assets/logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="src/styles/main.css" />
+  <link rel="stylesheet" href="src/styles/v2.css" />
+  <link rel="stylesheet" href="src/styles/v21.css" />
+  <link rel="stylesheet" href="src/styles/productos-reales.css" />
+  <link rel="stylesheet" href="src/styles/catalogo-real.css" />
+</head>
+<body>
+  <div class="demo-bar">
+    <div class="wrap demo-bar-inner">
+      <span><strong>RF-07</strong> Catálogo conectado a PostgreSQL · Desarrollo local</span>
+      <span>UniBite · Grupo 5</span>
+    </div>
+  </div>
+  <header class="top-header productos-real-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html" aria-label="Ir a la página principal de UniBite">
+        <img src="src/assets/logo.svg" alt="" />
+        <span>Uni<span class="brand-accent">Bite</span><small>Hecho por estudiantes</small></span>
+      </a>
+      <nav class="nav-links" aria-label="Navegación">
+        <a class="nav-link" href="gestion-productos.html">RF-05 · Productos</a>
+        <a class="nav-link" href="gestion-publicaciones.html">RF-06 · Publicaciones</a>
+        <a class="nav-link active" href="catalogo-real.html" aria-current="page">RF-07 · Catálogo</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap catalogo-real-main">
+    <div class="catalogo-real-heading">
+      <span class="eyebrow">Administración de bases de datos · UTEQ</span>
+      <h1>Descubre lo que preparan tus compañeros</h1>
+      <p class="lead muted">Explora alimentos publicados por emprendimientos universitarios. Aquí solo aparecen ofertas activas, disponibles y con entregas futuras.</p>
+    </div>
+
+    <section class="catalogo-real-filtros" aria-label="Buscar y filtrar publicaciones">
+      <form id="form-busqueda" class="catalogo-real-busqueda" role="search">
+        <label for="buscar-catalogo">Buscar alimentos, categorías o emprendimientos</label>
+        <div class="catalogo-real-busqueda-fila">
+          <input id="buscar-catalogo" name="buscar" type="search" maxlength="120" placeholder="Ej. Brownie, Postres, Dulces UniBite" autocomplete="off" />
+          <button class="btn primary" type="submit">Buscar</button>
+          <button class="btn outline" id="limpiar-busqueda" type="button">Limpiar</button>
+        </div>
+      </form>
+      <div class="catalogo-real-selectores">
+        <label for="filtro-modalidad">Modalidad
+          <select id="filtro-modalidad">
+            <option value="todas">Todas</option>
+            <option value="inmediata">Venta inmediata</option>
+            <option value="encargo">Por encargo</option>
+          </select>
+        </label>
+        <button class="btn outline" id="actualizar-catalogo" type="button">Actualizar catálogo</button>
+      </div>
+    </section>
+
+    <div class="catalogo-real-resumen">
+      <p id="resultado-catalogo" role="status" aria-live="polite">Consultando publicaciones disponibles…</p>
+      <p class="catalogo-real-distintivo">Información consultada desde PostgreSQL</p>
+    </div>
+    <section id="tarjetas-catalogo" class="catalogo-real-tarjetas" aria-label="Publicaciones disponibles"></section>
+    <section id="vacio-catalogo" class="catalogo-real-vacio" hidden>
+      <h2>No encontramos publicaciones disponibles</h2>
+      <p>Puedes probar otra búsqueda o registrar una publicación activa desde RF-06 si estás realizando las pruebas.</p>
+    </section>
+    <p class="catalogo-real-nota"><strong>Entorno académico de desarrollo.</strong> Esta pantalla consulta la API real de UniBite y no guarda datos en <code>localStorage</code>. El sistema todavía no dispone de autenticación ni solicitudes de compra desde este catálogo.</p>
+  </main>
+  <script src="src/services/catalogo-api.js" defer></script>
+</body>
+</html>
